@@ -5,6 +5,7 @@
 >  如果两个页面的 1.**协议** 2.**端口**（如果有指定）3.**域名**都相同，则两个页面具有相同的源。
 
 举例说明 `http://store.example.com/dir/page.html` 同源检测的示例:
+
 | URL | 结果     |  原因   |
 | -----   | -----:  | :----:  |
 | `http://store.example.com/index.html`| 成功|    |
