@@ -1,3 +1,5 @@
+# JavaScript 的同源策略及其"CORS"跨域方案
+---
 # 文章大纲
 - [同源策略](#同源策略)
   - [同源是什么？](#同源是什么？)
@@ -226,6 +228,6 @@ function handleResponse() {
 
 [MDN web docs CORS][2]
 
-[1]: http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.htmlhttp://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html
+[1]: http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html
 
 [2]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS

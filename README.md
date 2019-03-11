@@ -4,4 +4,4 @@
 
 ### JavaScript
 
-* [JavaScript 关于'跨域'问题的延伸-CORS](https://github.com/fengjiahao/blog/issues/1)
+* [JavaScript 的同源策略及其"CORS"跨域方案](https://github.com/fengjiahao/blog/blob/master/2019-03/JavaScript-CORS.md)
