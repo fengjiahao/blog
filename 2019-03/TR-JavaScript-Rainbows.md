@@ -309,7 +309,7 @@ makeColorGradient(.3,.3,.3,0,2,4);
 
 ```
 
-![rainbows-pic-10](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-10.png)`
+![rainbows-pic-10](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-10.png)
 
 如果我正好想要120度，我可以用 `2*math.pi/3`代替`2`，用`4*math.pi/3`代替`4`，这样就产生了几乎相同（但完美）的颜色循环：
 
