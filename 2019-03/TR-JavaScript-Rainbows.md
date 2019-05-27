@@ -19,7 +19,7 @@
 
 这是一个关于如何生成离散颜色序列的教程，可以用于字体、图形或表格中。例如此处显示的色彩带，和本文的标题（注：标题的字体用了`css3`的渐变阴影）。
 
-![rainbows-pic-1](/images/rainbows-1.png)
+![rainbows-pic-1](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-1.png)
 
 显然，如果你过度使用这项技术（我的意思是过度使用），你就会让网页看起来非常烦人，但是你可能会在学习这项技术时很开心，并且你会提高你的JS技巧，以及你对颜色如何工作的理解。
 
