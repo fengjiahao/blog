@@ -293,7 +293,7 @@ for (var i = 0; i < 32; ++i)
 }
 ```
 
-![rainbows-pic-10](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-10.png)
+![rainbows-pic-09](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-09.png)
 
 如您所见，我使用2和4来更改绿色和蓝色正弦波的对齐（或相位）。我选择2和4是因为它们几乎把正弦波（2π或6.2）的范围分成三个相等的部分，每个正弦波大约是一个周期的1/3，或120°，异相，就像这样：
 
@@ -308,6 +308,10 @@ makeColorGradient(.3,.3,.3,4,4,4);
 makeColorGradient(.3,.3,.3,0,2,4);
 
 ```
+
+![rainbows-pic-10](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-10.png)`
+
+如果我正好想要120度，我可以用 `2*math.pi/3`代替`2`，用`4*math.pi/3`代替`4`，这样就产生了几乎相同（但完美）的颜色循环：
 
 ![rainbows-pic-11](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-11.png)
 
