@@ -19,9 +19,7 @@
 
 这是一个关于如何生成离散颜色序列的教程，可以用于字体、图形或表格中。例如此处显示的色彩带，和本文的标题（注：标题的字体用了`css3`的渐变阴影）。
 
-<center>
-<font style="color:#80F31F">█</font><font style="color:#A5DE0B">█</font><font style="color:#C7C101">█</font><font style="color:#E39E03">█</font><font style="color:#F6780F">█</font><font style="color:#FE5326">█</font><font style="color:#FB3244">█</font><font style="color:#ED1868">█</font><font style="color:#D5078E">█</font><font style="color:#B601B3">█</font><font style="color:#9106D3">█</font><font style="color:#6B16EC">█</font><font style="color:#472FFA">█</font><font style="color:#2850FE">█</font><font style="color:#1175F7">█</font><font style="color:#039BE5">█</font><font style="color:#01BECA">█</font><font style="color:#0ADCA8">█</font><font style="color:#1DF283">█</font><font style="color:#3AFD5D">█</font><font style="color:#5CFD3A">█</font><font style="color:#82F21E">█</font><font style="color:#A7DD0A">█</font><font style="color:#C9BF01">█</font><font style="color:#E49C03">█</font><font style="color:#F77610">█</font><font style="color:#FE5127">█</font><font style="color:#FB3046">█</font><font style="color:#EC166A">█</font><font style="color:#D40690">█</font><font style="color:#B401B5">█</font><font style="color:#8F06D5">█</font>
-</center>
+![rainbows-pic-1](/images/rainbows-1.png)
 
 显然，如果你过度使用这项技术（我的意思是过度使用），你就会让网页看起来非常烦人，但是你可能会在学习这项技术时很开心，并且你会提高你的JS技巧，以及你对颜色如何工作的理解。
 
