@@ -76,7 +76,7 @@ if (foo) {
 
 安装包将全局安装
 
-## npm run 
+## npm run <test tag name>
 
 从 `package.json` 的 `scripts` 对象运行任意命令
 
