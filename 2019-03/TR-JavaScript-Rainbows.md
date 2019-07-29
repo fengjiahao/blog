@@ -318,26 +318,177 @@ makeColorGradient(.3,.3,.3,0,2,4);
 然而，结果是如此接近，我认为2和4是很好的替代品。据说古埃及人认为π等于三。在本教程中，我们将像埃及人一样编写代码。
 
 ## 关于色调循环的更多信息
+
+这一基本现象——三个120°的异相正弦波产生彩虹效应——实际上是从20世纪80年代中期开始，我就知道这一点。我最初只是通过使用正弦波来制造色彩（这是一种代替生活的频繁活动）来发现它。一旦我学会了这个技巧，我就开始使用它，每当我想要一个明亮的颜色分类。例如，我的惠特尼音乐盒中的圆点是用这个系统着色的。
+
+后来，当我学习了更多关于颜色理论的知识时，我发现我所做的基本上是使颜色的色调在色轮的圆上移动。如果你把我在色相饱和圆上画出的路径画出来，你会发现它不是一个完美的圆，而是一个三叶图案，就像这样：
+
 ![rainbows-pic-12](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-12.png)
 
+Note：我使用[处理语言](https://www.processing.org/)生成了这个示例。在javascript中实现这一点有点麻烦。如果你喜欢javascript中的图形编程，你会喜欢processing.js中的图形编程，你会喜欢我的处理博客（和未完成的书）：[The Joy of Processing](http://joyofprocessing.com/blog/)。
 
+尽管它不能形成一个完美的色调圆，但正弦波三叶草可以形成一个很好的颜色渐变，而且只需要几行代码就可以很容易地获得彩虹效果。我实际上更喜欢它的“正确”的hsb/hsl色调周期，因为它有更一致的亮度。它最小化了辐条的黄色，青色和洋红，你可以在图片中看到。
 
+现在，我将讨论如何修改函数，以生成更大的颜色分类和不同的阴影，例如粉彩。
 
+## 概括
 
+在接下来的几节中，我将使用一个通用函数来绘制这些颜色渐变。它允许我为每个颜色分量指定单独的频率和相位参数。代码如下：
 
+``` js
+function makeColorGradient(frequency1, frequency2, frequency3,
+                             phase1, phase2, phase3,
+                             center, width, len)
+  {
+    if (center == undefined)   center = 128;
+    if (width == undefined)    width = 127;
+    if (len == undefined)      len = 50;
 
+    for (var i = 0; i < len; ++i)
+    {
+       var red = Math.sin(frequency1*i + phase1) * width + center;
+       var grn = Math.sin(frequency2*i + phase2) * width + center;
+       var blu = Math.sin(frequency3*i + phase3) * width + center;
+       document.write( '<font color="' + RGB2Color(red,grn,blu) + '">&#9608;</font>');
+    }
+  }
+```
 
+这是绘制基本彩虹梯度的代码。
 
+``` js
+makeColorGradient(.3,.3,.3,0,2,4);
+```
 
+看起来是这样的：
 
+![rainbows-pic-13](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-13.png)
 
+## 制作粉彩
 
+获取粉彩的基本技巧是更改颜色组件的范围，以便对颜色组件使用较浅的颜色值。因此，当我们转换正弦值，而不是转换为全范围（0->255）时，我们将转换为类似（205-255）的值。我们将最后两个参数（中心和宽度）更改如下。之前：
 
+```js
+// center = 128, width = 127
+   makeColorGradient(.3,.3,.3,0,2,4, 128,127);
+```
 
+after:
 
+```js
+// center = 230, width = 25
+   makeColorGradient(.3,.3,.3,0,2,4, 230,25);
+```
 
+在修改后的代码中，230是正弦波的中心，25是与该中心值的最大偏差。所以正弦波从230开始，上升到（230+25），下降到（230-25）。换句话说，它的范围是（205-255）。
 
+这就形成了一条柔和的条纹：
 
+![rainbows-pic-14](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-14.png)
+
+我可以通过使用更宽的范围（中心=200，宽度=55）获得更暗的颜色，如：
+
+![rainbows-pic-15](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-15.png)
+
+## 通过增加频率获得更多条纹
+
+当你改变频率值时，你可以让颜色变化得更快或更慢。到目前为止，我主要使用的频率值是.3，但这里还有一些其他值：
+
+![rainbows-pic-16](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-16.png)
+
+## 阶段性试验
+
+对于基本的彩虹效应，我将每个正弦波的相位分离120度。如果我把相位放得更近会发生什么？让我们看看：
+
+![rainbows-pic-17](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-17.png)
+
+## 通过对每个组件使用单独的频率来获得更多的变化
+
+我使用的另一个技巧可以产生更大的颜色变化，那就是将每个颜色分量放在不同的频率上。代码如下：
+
+```js
+redFrequency = .1;
+grnFrequency = .2;
+bluFrequency = .3;
+center = 128;
+width = 127;
+makeColorGradient(redFrequency,grnFrequency,bluFrequency,0,2,4,center,width,50);
+```
+
+…下面是它的样子：
+
+![rainbows-pic-18](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-18.png)
+
+如果我把各个频道分开，你可以看到发生了什么：
+
+![rainbows-pic-19](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-19.png)
+
+使用三种不同的频率可能会产生饱和度值较低的颜色，例如上面例子中看到的黑色，或灰色或白色。当三个正弦波同时穿过同一个值时，就会发生这种情况。
+
+## 让循环重复
+
+假设您希望颜色循环每6步重复一次。你是怎么做到的？我的方法是使用一个频率值，它对应于2π的1/6。记住，正弦波每2π重复一次，所以这将使颜色每6个增量重复一次。这是密码……
+
+```js
+center = 128;
+width = 127;
+steps = 6;
+frequency = 2*Math.PI/steps;
+makeColorGradient(frequency,frequency,frequency,0,2,4,center,width,50);
+```
+
+它看起来是这样的：
+
+![rainbows-pic-20](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-20.png)
+
+## 使循环不重复
+
+如果你不想让颜色重复，那就用频率值，它不等于2π。事实证明，2.4这个数字在这方面很有效。2.4在弧度上，非常接近黄金角（137.51°），这是许多植物生长新的嫩枝的角度，以最大限度地利用树叶接收的阳光。在这里，我使用的基本上是相同的技术——我正在最大化颜色重复之间的距离（就像在茎周围重叠的叶子）。如果要为饼图或图形选择颜色，并且不确定需要绘制多少数据值，则使用2.4是一个很好的频率。这是密码。
+
+```js
+center = 128;
+width = 127;
+frequency = 2.4;
+makeColorGradient(frequency,frequency,frequency,0,2,4,center,width,50);
+```
+
+And here's what it looks like with a frequency of 2.4:
+
+![rainbows-pic-21](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-21.png)
+
+如果你将这一点与对每种颜色使用不同频率的技巧结合起来，并确保每个频率都不是彼此的倍数，你就可以得到更多的变化。这里我使用的频率是1.666、2.666和4.666。
+
+```js
+center = 128;
+width = 127;
+redFrequency = 1.666;
+grnFrequency = 2.666;
+bluFrequency = 3.666;
+makeColorGradient(redFrequency,grnFrequency,bluFrequency,0,0,0,center,width,50);
+```
+
+![rainbows-pic-22](https://github.com/fengjiahao/blog/blob/master/2019-03/images/rainbows-pic-22.png)
+
+最后，这里是一个函数，它对文本行产生彩虹效果。
+
+```js
+function colorText(str,phase)
+{
+    if (phase == undefined) phase = 0;
+  center = 128;
+  width = 127;
+  frequency = Math.PI*2/str.length;
+  for (var i = 0; i < str.length; ++i)
+  {
+     red   = Math.sin(frequency*i+2+phase) * width + center;
+     green = Math.sin(frequency*i+0+phase) * width + center;
+     blue  = Math.sin(frequency*i+4+phase) * width + center;
+     document.write( '<font style="color:' + RGB2Color(red,green,blue) + '">' + str.substr(i,1) + '</font>');
+  }
+}
+```
+
+## 附录(出现的js方法)
 ```js
 
 function RGB2Color(r,g,b)
