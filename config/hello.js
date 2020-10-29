@@ -5,6 +5,7 @@ let my_log = {
   text: 'fjh01的修改记录-001',
   text2: 'fjh01的修改记录-002',
   text3: 'fjh01的修改记录-003',
+  text4: 'fjh01的修改记录-003',
 }
 export default {
   my_log
